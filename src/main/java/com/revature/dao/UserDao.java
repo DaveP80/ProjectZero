@@ -14,7 +14,6 @@ import util.ConnectionUtil;
 
 public class UserDao implements IUserDao{
 
-
 	public int insert(User u) {
 		// Let's use insert to practice creating a SQL operation
 		
@@ -72,9 +71,16 @@ public class UserDao implements IUserDao{
 		// If our database fails to enter someone in we should return an index that we know our DB could never generate
 		
 		return -1;
-	
-	
-	
+	}
+
+	public User findById1(int id) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		
+		return null;
 	}
 
 	public User findByUsername(String username) {
@@ -141,6 +147,18 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public User findbyUsername(String balance) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double findById(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public User findbyId(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

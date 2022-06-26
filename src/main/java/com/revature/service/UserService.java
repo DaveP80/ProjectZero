@@ -3,12 +3,20 @@ package com.revature.service;
 import com.revature.dao.IUserDao;
 import com.revature.dao.UserDao;
 import com.revature.exceptions.RegisterUserFailedException;
+
+import util.ConnectionUtil;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import com.revature.branch.User;
 
 public class UserService {//Business Logic
 	
 	// Dependency Injection
-	private IUserDao udao = new UserDao();
+	public IUserDao udao = new UserDao();
 	
 	public User register(User u) {
 		
@@ -38,14 +46,7 @@ public class UserService {//Business Logic
 		
 		return u;
 	}
-	
-	public User deposit(User u) {
-		
-		double generateBalance = udao.insert(u);
-		
-		return u;
-		
-	}
+
 	
 	public User login(String username, String password) {
 		
@@ -68,5 +69,6 @@ public class UserService {//Business Logic
 		// Otherwise the password is not equal
 		return null;
 	}
+ 
 
 }

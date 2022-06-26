@@ -96,7 +96,17 @@ public class AccountDao implements IAccountDao{
 
 	@Override
 	public Account findById(int id) {
+		
+		
+		
+		
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int deposit(Account a) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
