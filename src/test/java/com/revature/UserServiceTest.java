@@ -14,11 +14,11 @@ import org.junit.Test;
 import com.revature.dao.UserDao;
 import com.revature.exceptions.RegisterUserFailedException;
 import com.revature.branch.Account;
-import com.revature.branch.*;
+import com.revature.branch.Role;
 import com.revature.branch.User;
 import com.revature.service.UserService;
 
-public class UserServiceTest {
+public class UserServiceTests {
 	
 	// Declare a variable of the class to be tested
 	private UserService us;
