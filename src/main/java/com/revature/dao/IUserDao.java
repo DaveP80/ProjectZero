@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.revature.branch.User;
@@ -16,7 +15,7 @@ public interface IUserDao {
 	int insert(User u); // Let's return the new primary key of whatever user was inserted
 	
 	//Read: return 1 or return all
-	double findById(int id) throws SQLException;
+	User findById(int id);
 	User findbyUsername(String balance);// Returns user object associated with this id in DB
 	User findByUsername(String username); // Return the user object associated with this username
 	List<User> findAll(); // Return a list of all user objects in the DB;
@@ -27,5 +26,5 @@ public interface IUserDao {
 	// Delete
 	boolean delete(int id); // Delete the user associated with the ID;
 
-	User findbyId(int id);
+	boolean checkUsernameExists(String username);
 }

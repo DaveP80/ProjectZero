@@ -14,6 +14,7 @@ import util.ConnectionUtil;
 
 public class UserDao implements IUserDao{
 
+
 	public int insert(User u) {
 		// Let's use insert to practice creating a SQL operation
 		
@@ -45,41 +46,27 @@ public class UserDao implements IUserDao{
 			
 			// Use a resultset to extract the primary key from the user object that was persisted
 			
-			ResultSet rs;
+			ResultSet rs = stmt.executeQuery();
 			
-			if ((rs = stmt.executeQuery()) != null) {
+			if (rs.next()) {
 				
 				// if we return data, we can iterate over it
-				
-				rs.next();
-				
 				// We need to capture the first column of data return (which is the id of the return user object)
-				
-				int id = rs.getInt(1); 
-				
+				int id = rs.getInt(1);
 				System.out.println("We returned a user with id #" + id);
-				
 				return id;
 			}
-		
-			
 		} catch (SQLException e) {
 			System.out.println("Unable to insert user - sql exception");
 			e.printStackTrace();
 		}
 		
 		// If our database fails to enter someone in we should return an index that we know our DB could never generate
-		
 		return -1;
 	}
 
-	public User findById1(int id) {
-		// TODO Auto-generated method stub
-		
-		
-		
-		
-		
+	@Override
+	public User findById(int id) {
 		return null;
 	}
 
@@ -90,44 +77,36 @@ public class UserDao implements IUserDao{
 		User u = new User();
 		
 		// Try with Resources to connect and work with database
-		
-		try (Connection conn = ConnectionUtil.getConnection()){
-			
-			String sql = "SELECT * FROM users WHERE username = ?";
-			
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, username);
-			
-			ResultSet rs;
-			
-			if ((rs = stmt.executeQuery()) != null) {
-				//if we return data, we can iterate over it
-				//we need to capture the first column of data return (which is the id of the return user)
-				// Move the cursor forward
-				rs.next();
-				
-				int id = rs.getInt("id");
-				String returnedUsername = rs.getString("username");
-				String password = rs.getString("pwd");
-				
-				Role role = Role.valueOf(rs.getString("user_role"));
-				
-				u.setId(id);
-				u.setUsername(returnedUsername);
-				u.setPassword(password);
-				u.setRole(role);
-				
-			} 
-		} catch (SQLException e) {
-			System.out.println("SQL Exception Thrown - can't retrieve user from DB");
-			e.printStackTrace();
+		Connection conn = ConnectionUtil.getConnection();
+		if (conn != null) {
+			try {
+				String sql = "SELECT * FROM users WHERE username = ?";
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt.setString(1, username);
+				ResultSet rs = stmt.executeQuery();
+
+				if (rs.next()) {
+
+					int id = rs.getInt("id");
+					String returnedUsername = rs.getString("username");
+					String password = rs.getString("pwd");
+
+					Role role = Role.valueOf(rs.getString("user_role"));
+
+					u.setId(id);
+					u.setUsername(returnedUsername);
+					u.setPassword(password);
+					u.setRole(role);
+
+					return u;
+				}
+			} catch (SQLException e) {
+				System.out.println("SQL Exception Thrown - Investigate here");
+				e.printStackTrace();
+			}
 		}
-		
-		
-		return u;
-	
-		
+
+		return null;
 	}
 
 	public List<User> findAll() {
@@ -146,21 +125,13 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
+	public boolean checkUsernameExists(String username) {
+		return false;
+	}
+
+	@Override
 	public User findbyUsername(String balance) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public double findById(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public User findbyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

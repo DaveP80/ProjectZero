@@ -1,10 +1,7 @@
 package com.revature.branch;
 
 import java.io.Serializable;
-import java.security.PublicKey;
 import java.util.List;
-
-
 
 //make a java bean
 public class User implements Serializable{
@@ -16,7 +13,6 @@ public class User implements Serializable{
 
 	private List<Account> accounts;
 	private String balance;
-
 
 	public User() {
 		super();
@@ -32,11 +28,6 @@ public class User implements Serializable{
 		this.accounts = accounts;
 		
 	}
-	
-	public User(int id) {
-		super();
-		this.id = id;
-	}
 
 
 	public User(String username, String password, Role role, List<Account> accounts) {
@@ -45,8 +36,6 @@ public class User implements Serializable{
 		this.password = password;
 		this.role = role;
 		this.accounts = accounts;
-		
-	
 	}
 
 
@@ -102,6 +91,10 @@ public class User implements Serializable{
 	}
 
 
+	public int getId() {
+		return id;
+	}
+
 
 	public void setId(int id) {
 		this.id = id;
@@ -149,12 +142,6 @@ public class User implements Serializable{
 
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
-	}
-
-
-	public int getId() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 	

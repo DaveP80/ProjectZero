@@ -1,8 +1,5 @@
 package com.revature.branch;
 
-
-
-
 public enum Role {
      Admin,
      Employee,

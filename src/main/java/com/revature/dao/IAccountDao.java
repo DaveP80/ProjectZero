@@ -17,8 +17,6 @@ public interface IAccountDao {
 	/////FIND balance by using id and selecting accounts table
 	
 	Account findById(int id);
-	
-	int deposit(Account a);
 
 	
      //returns account based
