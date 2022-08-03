@@ -12,7 +12,7 @@ public class ConnectionUtil {
 	private static Connection conn = null;
 	private static String dbUrl = "jdbc:postgresql://localhost:5432/postgres?currentSchema=bank0";
 	private static String dbUsername = "postgres";
-	private static String dbPassword = "4alfonso4";
+	private static String dbPassword = "*******";
 
 	private ConnectionUtil() {}
 
@@ -46,49 +46,3 @@ public class ConnectionUtil {
 		return null;
 	}
 }
-
-// if not well set one up
-
-// this is the not secure method
-// this will change when we talk about cloud services
-//String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=bank0";
-//String username = "postgres";
-//String password = "4alfonso4";
-////
-//	try {
-//		conn = DriverManager.getConnection(url, username, password);
-//		System.out.println("Established connection with the database.");
-//	} catch (SQLException e) {
-//		// TODO Auto-generated catch block
-//		System.out.println("Cannot make Connection");
-//		e.printStackTrace();//
-//	}
-//	String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=BANK";
-//	String username = "";
-//	String password = "";
-//
-//	Properties prop = new Properties ();
-//
-//	try {
-//		prop.load(new FileReader("C:\\Users\\david\\Desktop\\BSQLZERO\\src\\main\\resources\\application.properties"));
-//		url = prop.getProperty("url");
-//	    username = prop.getProperty("username");
-//	    password = prop.getProperty("password");
-//	    conn = DriverManager.getConnection(url, username, password);
-//		System.out.println("Established connection with the database.");
-//
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("Cannot make Connection");
-//			e.printStackTrace();//
-//		} catch (FileNotFoundException e)  {
-//			System.out.println("Cannot find properties file");
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			System.out.println("Something's wrong with the properties file");
-//			e.printStackTrace();
-//	}
-//an even more secure method
-
-
